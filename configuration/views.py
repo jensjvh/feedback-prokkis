@@ -1,10 +1,21 @@
-from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import permissions
+from .models import currentUser, productRequests
+from .serializers import *
 
+class productRequestsList(APIView):
 
-def index(request):
-    # print(request.)
-    if request.method == "POST":
-        test = request.POST["numero1"]
-        print(test)
+    def get(self, request, format = None):
+        productrequests = productRequests.objects.all()
+        serializer = productRequestsSerializer(productrequests)
+        return Response(serializer.data, status = status.HTTP_200_OK)
 
-    return HttpResponse("Hello lol")
+    def post(self, request, format = None):
+        data = {
+            'title' : request.data.get('title')
+            'category' : request.data.get('category')
+            ''
+
+        }

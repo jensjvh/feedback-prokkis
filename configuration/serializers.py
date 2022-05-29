@@ -6,7 +6,7 @@ class currentUserSerializer(serializers.ModelSerializer):
         model = currentUser
         fields = ["image", "name", "username"]
 
-class productRequestsSerialzier(serializers.ModelSerializer):
+class productRequestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = productRequests
         fields = ["title", "category", "upvotes", "status", "description"]
