@@ -14,8 +14,19 @@ class productRequestsList(APIView):
 
     def post(self, request, format = None):
         data = {
-            'title' : request.data.get('title')
-            'category' : request.data.get('category')
-            ''
-
+            'title' : request.data.get('title'),
+            'category' : request.data.get('category'),
+            'upvotes' : request.data.get('upvotes'),
+            'status' : request.data.get('status'),
+            'description' : request.data.get('description')
         }
+        serializer = productRequestsSerializer(data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)    
+
+    def delete(self)
+
+    def put()
