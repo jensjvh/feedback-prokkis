@@ -17,10 +17,11 @@ from django import views
 from django.contrib import admin
 from django.urls import include, path
 
-from configuration.views import index
+from configuration.views import productRequestsList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("calculate/", index, name="calculate"),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('productrequests', productRequestsList.as_view())
 ]
