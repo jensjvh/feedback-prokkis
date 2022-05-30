@@ -42,7 +42,8 @@ class productRequestsList(APIView):
     
     def put(self, request):
 
-        productrequest_update = productRequests.objects.filter(title = request.data.get('title'))
+        # productrequest_update = productRequests.objects.filter(title = request.data.get('title'))
+        productrequest_update = productRequests.objects.get(title = request.data.get('title'))
         if not productrequest_update:
             return Response(
                 {"res": "Object with title does not exist"},
@@ -55,6 +56,7 @@ class productRequestsList(APIView):
             'status' : request.data.get('status'),
             'description' : request.data.get('description')
         }
+        print(data)
         serializer = productRequestsSerializer(instance = productrequest_update, data = data, partial = True)
         if serializer.is_valid():
             serializer.save()
