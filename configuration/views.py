@@ -8,7 +8,7 @@ class productRequestsList(APIView):
 
     def get(self, request, format = None):
         productrequests = productRequests.objects.all()
-        serializer = productRequestsSerializer(productrequests)
+        serializer = productRequestsSerializer(productrequests, many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
 
     def post(self, request, format = None):
@@ -24,4 +24,18 @@ class productRequestsList(APIView):
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
 
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)    
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, format = None):
+
+        productrequest_delete = productRequests.objects.filter(title = request.data.get('title'))
+        if not productrequest_delete:
+            return Response(
+                {"res": "Object with title does not exist"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+        productrequest_delete.delete()
+        return Response(
+            {"res": "Object deleted!"},
+            status = status.HTTP_200_OK
+        )
