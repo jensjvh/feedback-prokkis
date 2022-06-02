@@ -1,3 +1,4 @@
+from numpy import product
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -58,6 +59,28 @@ class productRequestsList(APIView):
         }
         print(data)
         serializer = productRequestsSerializer(instance = productrequest_update, data = data, partial = True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+    def patch(self, request):
+
+        productrequest_patch = productRequests.objects.get(title = request.data.get('title'))
+        if not productrequest_patch:
+            return Response(
+                {"res": "Object with title does not exist"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+        data = {
+            'title' : request.data.get('title'),
+            'category' : request.data.get('category'),
+            'upvotes' : request.data.get('upvotes'),
+            'status' : request.data.get('status'),
+            'description' : request.data.get('description')
+        }
+        print(data)
+        serializer = productRequestsSerializer(instance = productrequest_patch, data = data, partial = True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_200_OK)
