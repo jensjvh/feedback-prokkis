@@ -9,4 +9,9 @@ class currentUserSerializer(serializers.ModelSerializer):
 class productRequestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = productRequests
-        fields = ["title", "category", "upvotes", "status", "description"]
+        fields = ["title", "category", "upvotes", "status", "description", "comment"]
+
+class commentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ["content", "productrequest"]
