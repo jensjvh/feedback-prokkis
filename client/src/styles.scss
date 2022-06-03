@@ -5,4 +5,82 @@
 
 * {
    box-sizing: border-box !important; 
+   font-family: 'Jost', sans-serif;
+}
+
+.j-h1 {
+   letter-spacing: -0.333333px;
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 24px;
+   line-height: 35px;
+   color: #3A4374;
+}
+
+.j-h2 {
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 29px;
+   /* identical to box height */
+   
+   letter-spacing: -0.25px;
+   
+   color: #3A4374;
+}
+
+.j-h3 {
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 26px;
+   /* identical to box height */
+   
+   letter-spacing: -0.25px;
+   
+   color: #3A4374;
+}
+
+.j-h4 {
+   font-family: 'Jost';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: -0.194444px;
+
+color: #3A4374;
+}
+
+.j-b1 {
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 23px;
+
+   color: #3A4374;
+}
+
+.j-b2 {
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 400;
+   font-size: 15px;
+   line-height: 22px;
+   
+   color: #3A4374;
+}
+
+.j-b3 {
+   font-family: 'Jost';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 13px;
+   line-height: 19px;
+   
+   color: #3A4374;
 }
